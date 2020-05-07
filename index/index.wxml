@@ -1,5 +1,4 @@
-<kivi-cloudar collectionId="ryrb7i" class="cloudar" bind:error="error"></kivi-cloudar>
 
-<button bindtap="start">开启云识别</button>
-<button bindtap="stop">关闭云识别</button>
-<text>云识别结果：{{result}}</text>
+<block wx:if="{{state == 0}}"><home /></block>
+<block wx:elif="{{state == 1}}"><cloudar /></block>
+<block wx:else>none</block>

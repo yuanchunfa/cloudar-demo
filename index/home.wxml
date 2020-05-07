@@ -1,0 +1,2 @@
+
+<button bind:tap="startAR">开启云识别</button>
