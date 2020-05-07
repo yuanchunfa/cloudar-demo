@@ -17,10 +17,12 @@ Component({
       state: 'state'
     },
     actions: {
-      startAR: 'nextState',
-      stop: 'resetState'
+      nextState: 'nextState',
+      resetState: 'resetState'
     },
   },
+
+  ready: function() { this.start(); },
 
   /**
    * Component properties
@@ -61,7 +63,7 @@ Component({
     stop() {
       console.log('stop cloudar.');
       cloudar.stopCloudar();
-      store.resetState();
+      this.resetState();
     },
   
     error(e) {
