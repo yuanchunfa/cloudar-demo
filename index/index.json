@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "kivi-cloudar": "plugin://cloudar/kivi-cloudar"
+  }
+}

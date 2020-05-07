@@ -1,0 +1,19 @@
+.cloudar {
+  display: block;
+  width: 100%;
+  height: 750rpx;
+}
+button {
+  margin-top: 10rpx;
+}
+text {
+  white-space: pre-wrap;
+}
+view {
+  margin-top: 20rpx;
+  text-align: center;
+}
+image {
+  display: block;
+  margin: 20rpx auto;
+}
