@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "home": "home",
-    "cloudar": "cloudar"
+    "cloudar": "cloudar",
+    "game": "game"
   }
 }

@@ -58,6 +58,8 @@ Component({
         sceneId,
       }, null, "\t");
       this.setData({ result });
+
+      this.nextState();
     },
   
     stop() {
