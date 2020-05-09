@@ -3,7 +3,7 @@ import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
 import { store } from './store'
 import { createScopedThreejs } from 'threejs-miniprogram'
 
-const { renderModel } = require('../loaders/model')
+const { renderModel } = require('./gameModel')
 
 Component({
   options: {

@@ -65,7 +65,7 @@ Component({
     stop() {
       console.log('stop cloudar.');
       cloudar.stopCloudar();
-      this.resetState();
+      this.nextState();
     },
   
     error(e) {

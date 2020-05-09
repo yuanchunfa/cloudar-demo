@@ -1,4 +1,4 @@
-import { registerGLTFLoader } from './gltf-loader'
+import { registerGLTFLoader } from '../utils/gltf-loader'
 
 export function renderModel(canvas, THREE) {
   registerGLTFLoader(THREE)
