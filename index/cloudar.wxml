@@ -1,4 +1,3 @@
 <kivi-cloudar collectionId="ryrb7i" class="cloudar" bind:error="error"></kivi-cloudar>
-
 <button bindtap="stop">回到主界面</button>
 <text>云识别结果：{{result}}</text>
