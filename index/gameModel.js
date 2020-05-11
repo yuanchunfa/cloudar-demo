@@ -1,13 +1,21 @@
 import { registerGLTFLoader } from '../utils/gltf-loader'
+const deviceOrientationControl = require('../utils/device-orientation-control.js');
 
-export function renderModel(canvas, THREE) {
+var seletedModel;
+var touchX, touchY;
+var lon, lat, gradient;
+var last_lon, last_lat;
+
+function renderModel(canvas, THREE) {
   registerGLTFLoader(THREE)
 
   var container, stats, clock, gui, mixer, actions, activeAction, previousAction;
   var camera, scene, renderer, model, face;
   var api = { state: 'Walking' };
+
   init();
   animate();
+  
   function init() {
     camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.25, 100);
     camera.position.set(- 5, 3, 10);
@@ -36,6 +44,8 @@ export function renderModel(canvas, THREE) {
     loader.load('https://file.anyodd.com/7dc6db79a9c5e23ea9f3/RobotExpressive.glb', function (gltf) {
       model = gltf.scene;
       scene.add(model);
+      seletedModel = model;
+
       createGUI(model, gltf.animations)
     }, undefined, function (e) {
       console.error(e);
@@ -83,9 +93,39 @@ export function renderModel(canvas, THREE) {
   }
 
   function animate() {
+    if (lon !== last_lon ||
+      lat !== last_lat) {
+      last_lon = lon;
+      last_lat = lat;
+      deviceOrientationControl.modelRotationControl(seletedModel, lon, lat, gradient, THREE);
+    }
+
     var dt = clock.getDelta();
     if (mixer) mixer.update(dt);
     canvas.requestAnimationFrame(animate);
     renderer.render(scene, camera);
   }
+}
+
+function onTouchStart(event) {
+  var touch = event.touches[0];
+  touchX = touch.x;
+  touchY = touch.y;
+}
+
+function onTouchMove(event) {
+  var touch = event.touches[0];
+  var moveX = touch.x - touchX;
+  var moveY = touch.y - touchY;
+  lon += moveX;
+  lat += moveY;
+  touchX = touch.x;
+  touchY = touch.y;
+  gradient = Math.abs(moveX / moveY);
+}
+
+module.exports = {
+  renderModel,
+  onTouchStart,
+  onTouchMove
 }

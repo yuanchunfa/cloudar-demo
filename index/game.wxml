@@ -1,1 +1,9 @@
-
+<view style="height: 50px"></view>
+<canvas
+  type="webgl"
+  id="webgl"
+  class="webgl" 
+  bindtouchstart="onTouchStartCallback"
+  bindtouchmove="onTouchMoveCallback"
+  style="width: 100%; height: 500px"
+></canvas>

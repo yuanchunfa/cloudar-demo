@@ -3,7 +3,7 @@ import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
 import { store } from './store'
 import { createScopedThreejs } from 'threejs-miniprogram'
 
-const { renderModel } = require('./gameModel')
+const  gameModel = require('./gameModel')
 
 Component({
   options: {
@@ -48,13 +48,23 @@ Component({
   methods: {
     initGame: function () {
       wx.createSelectorQuery()
-        .select('#webgl')
+        .in(this)
+        .select('.webgl')
         .node()
         .exec((res) => {
           const canvas = res[0].node
           const THREE = createScopedThreejs(canvas)
-          renderModel(canvas, THREE)
+          gameModel.renderModel(canvas, THREE)
         })
+    },
+
+    onTouchStartCallback: function(event) {
+      console.log('onTouchStart.')
+      gameModel.onTouchStart(event)
+    },
+
+    onTouchMoveCallback: function(event) {
+      gameModel.onTouchMove(event)
     },
   }
 })
