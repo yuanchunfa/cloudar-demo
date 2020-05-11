@@ -17,6 +17,9 @@ function renderModel(canvas, THREE) {
   animate();
   
   function init() {
+    lon = -90;
+    lat = 0;
+
     camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.25, 100);
     camera.position.set(- 5, 3, 10);
     camera.lookAt(new THREE.Vector3(0, 2, 0));
@@ -45,7 +48,6 @@ function renderModel(canvas, THREE) {
       model = gltf.scene;
       scene.add(model);
       seletedModel = model;
-
       createGUI(model, gltf.animations)
     }, undefined, function (e) {
       console.error(e);
