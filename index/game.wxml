@@ -1,7 +1,14 @@
+ <camera 
+  device-position="{{devicePosition}}" 
+  flash="off" 
+  frame-size="large"
+  binderror="error"
+  class="camera1">
+</camera>
 <canvas
   type="webgl"
   id="webgl"
-  class="webgl" 
+  class="canvas1" 
   bindtouchstart="onTouchStartCallback"
   bindtouchmove="onTouchMoveCallback"
   style="width: 100%; height: 500px">

@@ -24,8 +24,8 @@ function renderModel(canvas, THREE) {
     camera.position.set(- 5, 3, 10);
     camera.lookAt(new THREE.Vector3(0, 2, 0));
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xe0e0e0);
-    scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
+    //scene.background = new THREE.Color(0xe0e0e0);
+    //scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
     clock = new THREE.Clock();
     // lights
     var light = new THREE.HemisphereLight(0xffffff, 0x444444);
@@ -35,13 +35,13 @@ function renderModel(canvas, THREE) {
     light.position.set(0, 20, 10);
     scene.add(light);
     // ground
-    var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
-    mesh.rotation.x = - Math.PI / 2;
-    scene.add(mesh);
-    var grid = new THREE.GridHelper(200, 40, 0x000000, 0x000000);
-    grid.material.opacity = 0.2;
-    grid.material.transparent = true;
-    scene.add(grid);
+    // var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
+    // mesh.rotation.x = - Math.PI / 2;
+    // scene.add(mesh);
+    // var grid = new THREE.GridHelper(200, 40, 0x000000, 0x000000);
+    // grid.material.opacity = 0.2;
+    // grid.material.transparent = true;
+    // scene.add(grid);
     // model
     var loader = new THREE.GLTFLoader();
     loader.load('https://file.anyodd.com/7dc6db79a9c5e23ea9f3/RobotExpressive.glb', function (gltf) {
@@ -52,7 +52,10 @@ function renderModel(canvas, THREE) {
     }, undefined, function (e) {
       console.error(e);
     });
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ 
+      antialias: true,
+      alpha: true
+    });
     renderer.setPixelRatio(wx.getSystemInfoSync().pixelRatio);
     renderer.setSize(canvas.width, canvas.height);
     renderer.gammaOutput = true;

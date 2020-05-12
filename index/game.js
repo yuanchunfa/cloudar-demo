@@ -49,7 +49,7 @@ Component({
     initGame: function () {
       wx.createSelectorQuery()
         .in(this)
-        .select('.webgl')
+        .select('.canvas1')
         .node()
         .exec((res) => {
           const canvas = res[0].node
